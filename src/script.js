@@ -38,7 +38,7 @@ const rows = [
 ];
 
 const icons = {
-    tab: "fa-indent",
+
     left: "fa-arrow-left",
     up: "fa-arrow-up",
     right: "fa-arrow-right",
@@ -55,6 +55,8 @@ const container = document.createElement("div");
 container.classList.add("container");
 
 let isCapsOn = false;
+
+  
 function handleButtonClick(event) {
     const button =
         event.target.tagName === "BUTTON"
@@ -83,7 +85,14 @@ function handleButtonClick(event) {
         // null
     } else if (button.textContent === "Ctrl") {
         // null
-    } else {
+    } else if(button.textContent === "tab") {
+        textArea.value += "\t";
+    } else if (button.textContent === "Space") {
+        textArea.value += " ";
+    } else if (button.textContent === "Del") {
+        textArea.value = textArea.value.substring(0, textArea.value.length - 1)
+    }
+    else {
         textArea.value += isCapsOn ? button.textContent.toUpperCase() : button.textContent.toLowerCase();
     }
 }
