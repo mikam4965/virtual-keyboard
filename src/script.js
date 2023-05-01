@@ -78,7 +78,7 @@ function handleButtonClick(event) {
     } else if (button.textContent === "backspace") {
         textArea.value = textArea.value.substring(0, textArea.value.length - 1)
     } else if (button.textContent === "Enter") {
-        // null
+        textArea.value += "\n";
     } else if (button.textContent === "Shift") {
         // null
     } else if (button.textContent === "Ctrl") {
