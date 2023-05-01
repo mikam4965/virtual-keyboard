@@ -67,9 +67,16 @@ function handleButtonClick(event) {
     }
 
     if (button.textContent === "CapsLock") {
-        // null
+        isCapsOn = !isCapsOn;
+        button.classList.toggle("active", isCapsOn);
+        const keys = document.querySelectorAll(".key");
+        keys.forEach(key => {
+          if (key.textContent.length === 1) { // только для кнопок с одним символом
+            key.textContent = isCapsOn ? key.textContent.toUpperCase() : key.textContent.toLowerCase();
+          }
+        });
     } else if (button.textContent === "backspace") {
-        // null
+        textArea.value = textArea.value.substring(0, textArea.value.length - 1)
     } else if (button.textContent === "Enter") {
         // null
     } else if (button.textContent === "Shift") {
@@ -77,7 +84,7 @@ function handleButtonClick(event) {
     } else if (button.textContent === "Ctrl") {
         // null
     } else {
-        textArea.value += button.textContent;
+        textArea.value += isCapsOn ? button.textContent.toUpperCase() : button.textContent.toLowerCase();
     }
 }
 
